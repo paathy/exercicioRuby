@@ -2,16 +2,40 @@ puts "Bem-vindo ao Cookbook, sua rede social de receitas"
 
 receitas = []
 
-while(true) do
-     puts "Digite o nome da receita: "
-    nome = gets.chomp()
+    puts "[1] Cadastrar uma receita"
+    puts "[2] Ver todas as receitas"
+    puts "[3] Sair"
 
-    receitas << nome
-    
-    puts
-    puts "Receita #{nome} cadastrada com sucesso!"
-    puts
-    puts "========= Receitas Cadastradas ========="
+    print "Escolha uma opção: "
+    opcao = gets.to_i()
+
+
+while(opcao != 3) do
+    if (opcao == 1)
+     puts "Digite o nome da receita: "
+     nome = gets.chomp()
+     receitas << nome
+     puts
+     puts "Receita #{nome} cadastrada com sucesso!"
+     puts
+    elsif(opcao == 2)
+        puts "========= Receitas Cadastradas ========="
+        puts receitas
+        puts      
+    else
+       puts "Opção inválida"
+    end
+
+    puts "[1] Cadastrar uma receita"
+    puts "[2] Ver todas as receitas"
+    puts "[3] Sair"
+
+    print "Escolha uma opção: "
+    opcao = gets.to_i()
+
+end
+
+puts "Obrigado por usar o Cookbook, até logo s2"
     #aqui é um for em Ruby
     #for receita in receitas do
      #   puts receita
@@ -23,6 +47,5 @@ while(true) do
     #end
 
     #quando você usa o nome do array no puts o Ruby entende que é um array
-    puts receitas
-    puts
-end
+    
+
