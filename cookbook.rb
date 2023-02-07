@@ -1,38 +1,47 @@
-puts "Bem-vindo ao Cookbook, sua rede social de receitas"
+def bem_vindo
+    puts "Bem-vindo ao Cookbook, sua rede social de receitas"
+end
 
-receitas = []
-
+def menu()
     puts "[1] Cadastrar uma receita"
     puts "[2] Ver todas as receitas"
     puts "[3] Sair"
 
-    print "Escolha uma opção: "
-    opcao = gets.to_i()
+    print "Escolha uma opção: " 
+    return gets.to_i()
+end
 
+def inserir_receita()
+    puts "Digite o nome da receita: "
+    nome = gets.chomp()
+    puts "Digite o tipo da receita: "
+    tipo = gets.chomp()
+    puts
+    puts "Receita #{nome} cadastrada com sucesso!"
+    puts
+    return{ nome: nome, tipo: tipo }
+end
+
+def imprimir_receitas(r)
+    puts "========= Receitas Cadastradas ========="
+    r.each do |receita|
+    puts "#{receita[:nome]} - #{receita[:tipo]}"
+    end 
+    puts
+end
+bem_vindo()
+receitas = []
+opcao = menu()
 
 while(opcao != 3) do
     if (opcao == 1)
-     puts "Digite o nome da receita: "
-     nome = gets.chomp()
-     receitas << nome
-     puts
-     puts "Receita #{nome} cadastrada com sucesso!"
-     puts
+    receitas << inserir_receita()
     elsif(opcao == 2)
-        puts "========= Receitas Cadastradas ========="
-        puts receitas
-        puts      
+    imprimir_receitas(receitas)
     else
        puts "Opção inválida"
     end
-
-    puts "[1] Cadastrar uma receita"
-    puts "[2] Ver todas as receitas"
-    puts "[3] Sair"
-
-    print "Escolha uma opção: "
-    opcao = gets.to_i()
-
+    opcao = menu() 
 end
 
 puts "Obrigado por usar o Cookbook, até logo s2"
@@ -48,4 +57,3 @@ puts "Obrigado por usar o Cookbook, até logo s2"
 
     #quando você usa o nome do array no puts o Ruby entende que é um array
     
-
